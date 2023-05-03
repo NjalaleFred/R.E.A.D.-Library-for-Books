@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [books, setBooks] =useState([])
+  const [newBooks, setNewBooks] = useState([])
+
   useEffect(() => {
     fetch(
       `https://gutendex.com/books/?fields=id,title,authors,description,image,subjects`
@@ -23,23 +25,23 @@ function App() {
       },
     })
       .then((resp) => resp.json())
-      .then((data) => setBooks(data));
+      .then((data) => setNewBooks(data));
   }, []);
 
   function deleteBook(id) {
-    const updatedBooks = books.filter((book) => book.id !== id);
-    setBooks(updatedBooks);
+    const updatedBooks = newBooks.filter((book) => book.id !== id);
+    setNewBooks(updatedBooks);
   }
 
   return (
     <div className="App">
       <DisplayAddedBook
-        books={books}
-        setBooks={setBooks}
+        newBooks={newBooks}
+        setNewBooks={setNewBooks}
         onDeleteBook={deleteBook}
-        id={books.id}
+        id={newBooks.id}
       />
-      <AddBook books={books} setBooks={setBooks} />
+      <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
     </div>
   );
 }

@@ -1,13 +1,13 @@
 import React from "react";
 
-export const DisplayAddedBook = ({ books, onDeleteBook }) => {
+export const DisplayAddedBook = ({ newBooks, onDeleteBook }) => {
   function handleDeleteBook(id) {
     fetch(`http://localhost:4001/books/${id}`, {
       method: "DELETE",
     }).then(() => onDeleteBook(id));
   }
 
-  const myBooks = books.map((book) => {
+  const myBooks = newBooks.map((book) => {
     return (
       <div key={book.id}>
         <h2>{book.title} </h2>

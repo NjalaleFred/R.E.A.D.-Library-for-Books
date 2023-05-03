@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddBook({ books, setBooks }) {
+function AddBook({ newBooks, setNewBooks }) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState("");
@@ -17,8 +17,8 @@ function AddBook({ books, setBooks }) {
     };
 
     function postBook(newBook) {
-      const updatedBooks = [...books, newBook];
-      setBooks(updatedBooks);
+      const updatedBooks = [...newBooks, newBook];
+      setNewBooks(updatedBooks);
     }
 
     fetch("http://localhost:4001/books", {
