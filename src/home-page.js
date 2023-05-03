@@ -8,7 +8,8 @@ const HomePage = () => {
     const [hasNextPage, setHasNextPage] = useState(false);
 
     useEffect(() => {
-        fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}`)
+//         fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}`)
+        fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}&fields=id,title,authors,description,image,subjects`)
             .then((response) => response.json())
             .then((data) => {
                 setBooks(data.results);
