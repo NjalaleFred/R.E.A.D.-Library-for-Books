@@ -4,19 +4,16 @@ const HomePage = () => {
     const [books, setBooks] = useState([]);
     const [query, setQuery] = useState("");
     const [genre, setGenre] = useState("");
-    const [page, setPage] = useState(1);
-    const [hasNextPage, setHasNextPage] = useState(false);
 
     useEffect(() => {
-//         fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}`)
-        fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}&fields=id,title,authors,description,image,subjects`)
+        // fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}`)
+        fetch(`https://gutendex.com/books/?page=1&topic=${genre}&search=${query}&fields=id,title,authors,description,image,subjects`)
             .then((response) => response.json())
             .then((data) => {
                 setBooks(data.results);
-                setHasNextPage(!!data.next);
             })
             .catch((error) => console.error(error));
-    }, [page, genre, query]);
+    }, [genre, query]);
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
@@ -28,15 +25,6 @@ const HomePage = () => {
 
     const handleSearch = (event) => {
         event.preventDefault();
-        setPage(1);
-    };
-
-    const handlePreviousPage = () => {
-        setPage((prevPage) => prevPage - 1);
-    };
-
-    const handleNextPage = () => {
-        setPage((prevPage) => prevPage + 1);
     };
 
     return (
@@ -59,9 +47,7 @@ const HomePage = () => {
                         <th>ID</th>
                         <th>Title</th>
                         <th>Authors</th>
-                        <th>Description</th>
-                        <th>Subjects</th>
-                        <th>Download Count</th>
+                        <th>Book Cover</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,15 +56,11 @@ const HomePage = () => {
                             <td>{book.id}</td>
                             <td>{book.title}</td>
                             <td>{book.authors.map((author) => author.name).join(", ")}</td>
-                            <td>{book.description}</td>
-                            <td>{book.subjects.join(", ")}</td>
-                            <td>{book.download_count}</td>
+                            <td><img src={book.formats["image/jpeg"]} alt=""/></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            {page > 1 && <button onClick={handlePreviousPage}>Previous Page</button>}
-            {hasNextPage && <button onClick={handleNextPage}>Next Page</button>}
         </div>
     );
 };
