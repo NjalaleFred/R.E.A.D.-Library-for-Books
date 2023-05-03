@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const HomePage = () => {
     const [books, setBooks] = useState([]);
-    const [query, setQuery] = useState("");
-    const [genre, setGenre] = useState("");
 
     useEffect(() => {
         // fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}`)
@@ -15,32 +13,8 @@ const HomePage = () => {
             .catch((error) => console.error(error));
     }, [genre, query]);
 
-    const handleInputChange = (event) => {
-        setQuery(event.target.value);
-    };
-
-    const handleGenreChange = (event) => {
-        setGenre(event.target.value);
-    };
-
-    const handleSearch = (event) => {
-        event.preventDefault();
-    };
-
     return (
         <div>
-            <h1>Book Search</h1>
-            <form onSubmit={handleSearch}>
-                <label htmlFor="genre">Genre:</label>
-                <select id="genre" value={genre} onChange={handleGenreChange}>
-                    <option value="">All</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="romance">Romance</option>
-                    <option value="science_fiction">Science Fiction</option>
-                </select>
-                <input type="text" placeholder="Search books" value={query} onChange={handleInputChange} />
-                <button type="submit">Search</button>
-            </form>
             <table>
                 <thead>
                     <tr>
