@@ -1,10 +1,19 @@
-import "./App.css";
 import AddBook from "./Components/AddBook";
 import { DisplayAddedBook } from "./Components/DisplayAddedBook";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] =useState([])
+  useEffect(() => {
+    fetch(
+      `https://gutendex.com/books/?fields=id,title,authors,description,image,subjects`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setBooks(data.results);
+      });
+  }, []);
+
 
   useEffect(() => {
     fetch("http://localhost:4001/books", {
