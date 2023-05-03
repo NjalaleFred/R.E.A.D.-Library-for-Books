@@ -20,11 +20,5 @@ const SearchBar= ({handleSearch})=> {
 }
     
 
-export const Search = () => {
-  return (
-    <div>Search</div>
-  )
-}
-
-
+export default SearchBar
 
