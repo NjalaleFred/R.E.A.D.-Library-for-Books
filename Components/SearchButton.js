@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-export const SearchButton = () => {
-  return (
-    <div>SearchButton</div>
-  )
+const SearchButton = ({handleSearch}) => {
+    return (
+        <button onClick={handleSearch}>Search</button>
+    )
 }
+
+export default SearchButton
