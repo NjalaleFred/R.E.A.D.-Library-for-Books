@@ -13,6 +13,8 @@ const SearchBar= ({handleSearch})=> {
             value={searchQuery}
             onChange={handleInputChange}
             />
+            <SearchButton handleSearch={() =>
+               handleSearch(searchQuery)}/>
         </div>
     )
 }
