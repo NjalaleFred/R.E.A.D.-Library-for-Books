@@ -41,9 +41,11 @@ function App() {
         onDeleteBook={deleteBook}
         id={newBooks.id}
       />
-      <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
+            <HomePage books={books} />
+          <AddBook newBooks={newBooks} setNewBooks={setNewBooks} /><Borrowing books={books}/>
     </div>
   );
 }
 
 export default App;
+
