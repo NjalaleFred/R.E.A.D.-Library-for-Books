@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export function Borrowing ({books}) {
     const [receipt, setReceipt] = useState(`REC-${Math.floor(Math.random()*10)}-${Math.floor(Math.random()*100)}-${Math.floor(Math.random()*1000)}`)
     const [borrower, setBorrower] = useState('')
-
+    const [specificBook, setSpecificBook] = useState('')
+    
     const handleUser = (e) => {
         setBorrower(
             [e.target.name] = e.target.value
@@ -13,7 +14,7 @@ export function Borrowing ({books}) {
     
     
     const today = new Date();
-    const currentDate=today.getDate() + "/"+ parseInt(today.getMonth()+1) +"/" + today.getFullYear();       
+    const currentDate=parseInt(today.getMonth()+1) +"/" + today.getDate() + "/"+ today.getFullYear();       
     const dueDate=parseInt(today.getMonth()+1) + "/" + ((today.getDate())+3) + "/"+ today.getFullYear();
 
     return (
@@ -46,7 +47,7 @@ export function Borrowing ({books}) {
                         placeholder='NAME'/>
                     <input 
                         style={{textAlign:'center', width:'400px', margin: '10px'}}
-                        type='text'
+                        type='number'
                         name="borrowerPhone"
                         placeholder='PHONE NUMBER'/>
                 </div>
@@ -69,7 +70,10 @@ export function Borrowing ({books}) {
                     <input 
                         style={{textAlign:'center', width:'400px', margin: '5px'}}
                         type='text'
-                        placeholder='BOOK'/>
+                        placeholder='BOOK'
+                        onChange={(e)=>{
+                            setSpecificBook(e.target.value)
+                        }}/>
                     <p style={{textAlign:'center', width:'400px', margin: '5px', fontSize:'15px'}}>
                         BORROW DATE: {currentDate}
                     </p>
@@ -79,6 +83,9 @@ export function Borrowing ({books}) {
                     <input 
                         style={{alignContent:'center', width:'100px', margin: '5px', fontSize:'15px', padding: '5px'
                                 , backgroundColor:'violet', cursor:'pointer'}}
+                        onClick={(e)=>{
+                            alert(`Confirmed borrowing of ${specificBook} by ${borrower} on ${currentDate} with receipt ${receipt} due ${dueDate}` )
+                        }}
                         type='submit'
                         />
                 </div>
