@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
 import './App.css';
+import { Borrowing } from './Components/Borrowing';
+import { useEffect, useState } from 'react';
 import HomePage from './Components/home-page';
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
 
   return (
     <div className="App">
-        <HomePage books={books} />
+          <HomePage books={books} />
+          <Borrowing books={books}/>
     </div>
   );
 }
