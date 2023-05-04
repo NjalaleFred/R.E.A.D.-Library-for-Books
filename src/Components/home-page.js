@@ -45,7 +45,7 @@ const HomePage = ({ books,newBooks,setNewBooks,onDeleteBook,id }) => {
               <img
               src={book.formats["image/jpeg"]}
               alt=""
-              style={{ width: "100%" }}
+              style={{ width: "100%"}}
             />
             <div style={{ padding: "10px", backgroundColor:"purple", fontSize:"15px", color:"white" }}>
               <h2>{book.title}</h2>

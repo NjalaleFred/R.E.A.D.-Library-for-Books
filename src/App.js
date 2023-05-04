@@ -67,13 +67,6 @@ function App() {
           </text>
           
       </div>
-
-      {/*<img 
-      src="https://wallpaperaccess.com/full/1159586.jpg"
-      alt="What is R.E.A.D.?"
-        width={'1600px'}
-        height={'600px'}
-  />*/}
       
       <Switch>
         <Route path="/add">
