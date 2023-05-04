@@ -11,7 +11,7 @@ const GenreFilter = ({ selectedGenre, setSelectedGenre }) => {
   ];
 
   return (
-    <div className="genre-filter">
+    <div style={{marginBottom: '20px'}}>
       <select
         value={selectedGenre}
         onChange={(event) => setSelectedGenre(event.target.value)}
