@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+
 import HomePage from './Components/home-page';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <HomePage books={books} />
+          <HomePage books={books} />
     </div>
   );
 }
