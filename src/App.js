@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import HomePage from './home-page';
 
 function App() {
   const [books, setBooks] =useState([])
@@ -16,10 +15,9 @@ function App() {
 
   return (
     <div className="App">
-      <HomePage />
+    
     </div>
   );
 }
 
 export default App;
-
