@@ -1,10 +1,12 @@
 import AddBook from "./Components/AddBook";
 import { DisplayAddedBook } from "./Components/DisplayAddedBook";
 import { useEffect, useState } from "react";
+import { Borrowing } from "./Components/Borrowing";
+import HomePage from "./Components/home-page";
 
 function App() {
-  const [books, setBooks] =useState([])
-  const [newBooks, setNewBooks] = useState([])
+  const [books, setBooks] = useState([]);
+  const [newBooks, setNewBooks] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -15,7 +17,6 @@ function App() {
         setBooks(data.results);
       });
   }, []);
-
 
   useEffect(() => {
     fetch("http://localhost:4001/books", {
@@ -35,17 +36,17 @@ function App() {
 
   return (
     <div className="App">
+      <HomePage books={books} />
       <DisplayAddedBook
         newBooks={newBooks}
         setNewBooks={setNewBooks}
         onDeleteBook={deleteBook}
         id={newBooks.id}
       />
-            <HomePage books={books} />
-          <AddBook newBooks={newBooks} setNewBooks={setNewBooks} /><Borrowing books={books}/>
+      <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
+      <Borrowing books={books} />
     </div>
   );
 }
 
 export default App;
-

@@ -41,6 +41,7 @@ function AddBook({ newBooks, setNewBooks }) {
 
   return (
     <div>
+      <h2>Add a book</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
