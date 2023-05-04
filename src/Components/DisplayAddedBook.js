@@ -2,7 +2,7 @@ import React from "react";
 
 export const DisplayAddedBook = ({ newBooks, onDeleteBook }) => {
   function handleDeleteBook(id) {
-    fetch(`http://localhost:4001/books/${id}`, {
+    fetch(`https://books-7zzp.onrender.com/books/${id}`, {
       method: "DELETE",
     }).then(() => onDeleteBook(id));
   }
@@ -13,7 +13,7 @@ export const DisplayAddedBook = ({ newBooks, onDeleteBook }) => {
         key={book.id}
         style={{
           margin: "15px",
-          width: "25%",
+          width: "300px",
           display: "block",
           flexWrap: "wrap",
           backgroundColor: "purple",

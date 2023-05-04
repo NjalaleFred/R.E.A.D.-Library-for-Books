@@ -24,7 +24,7 @@ function AddBook({ newBooks, setNewBooks }) {
       setNewBooks(updatedBooks);
     }
 
-    fetch("http://localhost:4001/books", {
+    fetch("https://books-7zzp.onrender.com/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

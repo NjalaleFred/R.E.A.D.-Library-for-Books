@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4001/books", {
+    fetch("https://books-7zzp.onrender.com/books", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
