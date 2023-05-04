@@ -41,9 +41,19 @@ function AddBook({ newBooks, setNewBooks }) {
 
   return (
     <div>
-      <h2>Add a book</h2>
-      <form onSubmit={handleSubmit}>
+      <header style={{
+                backgroundColor: 'whitesmoke',
+                padding: '20px',
+                border: 'solid',
+                borderColor: 'gray'
+                }}>
+                "Add a Book"
+            </header>
+
+      <form onSubmit={handleSubmit}
+      style={{display:'inline-grid', margin:'20px'}}>
         <input
+          style={{margin: '10px', width:'200px'}}
           type="text"
           placeholder="Title"
           value={title}
@@ -51,6 +61,7 @@ function AddBook({ newBooks, setNewBooks }) {
         />
 
         <input
+          style={{margin: '10px'}}
           type="text"
           placeholder="Author"
           value={author}
@@ -58,6 +69,7 @@ function AddBook({ newBooks, setNewBooks }) {
         />
 
         <input
+          style={{margin: '10px'}}
           type="text"
           placeholder="Subject"
           value={subjects}
@@ -65,12 +77,13 @@ function AddBook({ newBooks, setNewBooks }) {
         />
 
         <input
+          style={{margin: '10px'}}
           type="text"
           placeholder="Image"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-        <button type="submit">Add a Book</button>
+        <button type="submit" style={{cursor: 'pointer'}}>Add a Book</button>
       </form>
     </div>
   );

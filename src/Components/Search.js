@@ -7,8 +7,9 @@ const SearchBar= ({handleSearch})=> {
         setSearchQuery(event.target.value)
     }
     return (
-        <div className="search-bar">
+        <div style={{borderStyle:'double', borderColor:'black'}}>
             <input
+            style={{margin:'20px', marginRight:'0px', marginBottom:'0px'}}
             type='text'
             placeholder='Enter the name of the book'
             value={searchQuery}
