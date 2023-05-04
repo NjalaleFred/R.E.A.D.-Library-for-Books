@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import './App.css';
 import { Borrowing } from './Components/Borrowing';
 
@@ -13,8 +12,6 @@ function App() {
         setBooks(data.results);
       });
   }, []);
-
-  
 
   return (
     <div className="App">
