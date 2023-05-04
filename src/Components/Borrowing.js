@@ -1,11 +1,20 @@
+import { useEffect, useState } from "react";
 
 
 export function Borrowing ({books}) {
-    const receiptId = `REC-${Math.floor(Math.random()*10)}-${Math.floor(Math.random()*100)}-${Math.floor(Math.random()*1000)}`
+    const [receipt, setReceipt] = useState(`REC-${Math.floor(Math.random()*10)}-${Math.floor(Math.random()*100)}-${Math.floor(Math.random()*1000)}`)
+    const [borrower, setBorrower] = useState('')
+
+    const handleUser = (e) => {
+        setBorrower(
+            [e.target.name] = e.target.value
+        )
+    }
+    
     
     const today = new Date();
-    const currentDate=today.getDate() + "/"+ parseInt(today.getMonth()+1) +"/"+today.getFullYear();       
-    const dueDate=((today.getDate())+3) + "/"+ parseInt(today.getMonth()+1) +"/"+today.getFullYear();
+    const currentDate=today.getDate() + "/"+ parseInt(today.getMonth()+1) +"/" + today.getFullYear();       
+    const dueDate=parseInt(today.getMonth()+1) + "/" + ((today.getDate())+3) + "/"+ today.getFullYear();
 
     return (
         <div style={{border: 'solid', borderColor: 'black'}}>
@@ -31,10 +40,14 @@ export function Borrowing ({books}) {
                     <input 
                         style={{textAlign:'center', width:'400px', margin: '10px'}}
                         type='text'
+                        name="borrower"
+                        value={borrower}
+                        onChange={handleUser}
                         placeholder='NAME'/>
                     <input 
                         style={{textAlign:'center', width:'400px', margin: '10px'}}
-                        type='number'
+                        type='text'
+                        name="borrowerPhone"
                         placeholder='PHONE NUMBER'/>
                 </div>
             </div>
@@ -49,19 +62,19 @@ export function Borrowing ({books}) {
                     Borrowing Details
                 </header>
                 <div style={{display:'inline-grid'}}>
-                    <p style={{textAlign:'center', width:'400px', margin: '5px'}}>
-                        RECEIPT ID:
+                    <p style={{textAlign:'center', width:'400px', margin: '5px'}}
+                        >
+                        RECEIPT NUMBER: {receipt}
                     </p>
                     <input 
                         style={{textAlign:'center', width:'400px', margin: '5px'}}
                         type='text'
                         placeholder='BOOK'/>
-                    <input 
-                        style={{textAlign:'center', width:'400px', margin: '5px', fontSize:'15px'}}
-                        type='date'
-                        placeholder='BORROWING DATE'/>
                     <p style={{textAlign:'center', width:'400px', margin: '5px', fontSize:'15px'}}>
-                        DUE DATE:
+                        BORROW DATE: {currentDate}
+                    </p>
+                    <p style={{textAlign:'center', width:'400px', margin: '5px', fontSize:'15px'}}>
+                        DUE DATE: {dueDate}
                     </p>
                     <input 
                         style={{alignContent:'center', width:'100px', margin: '5px', fontSize:'15px', padding: '5px'
