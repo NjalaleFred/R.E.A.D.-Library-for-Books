@@ -17,7 +17,8 @@ function App() {
 
   return (
     <div className="App">
-          <Borrowing books={books}/><HomePage books={books} />
+          <HomePage books={books} />
+          <Borrowing books={books}/>
     </div>
   );
 }
