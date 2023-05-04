@@ -1,8 +1,21 @@
 import React, { useState } from "react";
+import SearchBar from "./Search";
 import GenreFilter from "./GenreFilter";
 
 const HomePage = ({ books }) => {
+  const [searchResults, setSearchResults] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
+
+  const handleSearch = (query) => {
+    const results = books.filter(
+      (book) =>
+        book.title.toLowerCase().includes(query.toLowerCase()) ||
+        book.authors.some((author) =>
+          author.name.toLowerCase().includes(query.toLowerCase())
+        )
+    );
+    setSearchResults(results);
+  };
 
   const filteredBooks = selectedGenre
     ? books.filter((book) =>
@@ -12,16 +25,32 @@ const HomePage = ({ books }) => {
       )
     : books;
 
+  const displayBooks = searchResults.length > 0 ? searchResults : filteredBooks;
+
   return (
     <div>
-      <GenreFilter selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
+      <SearchBar handleSearch={handleSearch} />
+      <GenreFilter
+        selectedGenre={selectedGenre}
+        setSelectedGenre={setSelectedGenre}
+      />
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {filteredBooks.map((book) => (
-          <div key={book.id} className="card" style={{ width: "300px", margin: "10px" }}>
-            <img src={book.formats["image/jpeg"]} alt="" style={{ width: "100%" }} />
+        {displayBooks.map((book) => (
+          <div
+            key={book.id}
+            className="card"
+            style={{ width: "300px", margin: "10px" }}
+          >
+              <img
+              src={book.formats["image/jpeg"]}
+              alt=""
+              style={{ width: "100%" }}
+            />
             <div style={{ padding: "10px" }}>
               <h2>{book.title}</h2>
-              <p>by {book.authors.map((author) => author.name).join(", ")}</p>
+              <p>
+                by {book.authors.map((author) => author.name).join(", ")}
+              </p>
               <p>{book.description}</p>
             </div>
           </div>
@@ -32,3 +61,5 @@ const HomePage = ({ books }) => {
 };
 
 export default HomePage;
+
+
