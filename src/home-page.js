@@ -14,7 +14,6 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>Book Search</h1>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
                 {books.map((book) => (
                     <div key={book.id} className="card" style={{ width: "300px", margin: "10px" }}>
