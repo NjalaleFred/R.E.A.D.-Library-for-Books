@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export function Borrowing ({books}) {
     //Sets the value of the receipt to a dynamic value that is random
-    const [receipt, setReceipt] = useState(`REC-${Math.floor(Math.random()*10)}-${Math.floor(Math.random()*100)}-${Math.floor(Math.random()*1000)}`)
+    const [receipt] = useState(`REC-${Math.floor(Math.random()*10)}-${Math.floor(Math.random()*100)}-${Math.floor(Math.random()*1000)}`)
     //Sets the value of the borrower to an empty state
     const [borrower, setBorrower] = useState('')
     //Sets the value of the borrowed book to an empty state
