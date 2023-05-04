@@ -1,17 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const HomePage = () => {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        fetch(`https://gutendex.com/books/?page=1&fields=id,title,authors,description,image,subjects`)
-            .then((response) => response.json())
-            .then((data) => {
-                setBooks(data.results);
-            })
-            .catch((error) => console.error(error));
-    }, []);
-
+const HomePage = ({books}) => {
     return (
         <div>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
