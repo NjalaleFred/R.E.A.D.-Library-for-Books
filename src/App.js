@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import GenreFilter from './Components/GenreFilter';
-import SearchBar from './Components/Search';
+
 import HomePage from './Components/home-page';
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-          <GenreFilter/><SearchBar/><HomePage books={books} />
+          <HomePage books={books} />
     </div>
   );
 }
