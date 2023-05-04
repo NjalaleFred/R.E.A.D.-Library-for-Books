@@ -1,5 +1,4 @@
 import AddBook from "./Components/AddBook";
-import { DisplayAddedBook } from "./Components/DisplayAddedBook";
 import { useEffect, useState } from "react";
 import { Borrowing } from "./Components/Borrowing";
 import HomePage from "./Components/home-page";
@@ -36,13 +35,10 @@ function App() {
 
   return (
     <div className="App">
-      <HomePage books={books} />
-      <DisplayAddedBook
-        newBooks={newBooks}
+      <HomePage books={books} newBooks={newBooks}
         setNewBooks={setNewBooks}
         onDeleteBook={deleteBook}
-        id={newBooks.id}
-      />
+        id={newBooks.id} />
       <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
       <Borrowing books={books} />
     </div>

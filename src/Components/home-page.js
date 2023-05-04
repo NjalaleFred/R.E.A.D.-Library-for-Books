@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import SearchBar from "./Search";
 import GenreFilter from "./GenreFilter";
+import { DisplayAddedBook } from "./DisplayAddedBook";
 
-const HomePage = ({ books }) => {
+const HomePage = ({ books,newBooks,setNewBooks,onDeleteBook,id }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
 
@@ -56,6 +57,12 @@ const HomePage = ({ books }) => {
           </div>
         ))}
       </div>
+      <DisplayAddedBook
+      newBooks={newBooks}
+      setNewBooks={setNewBooks}
+      onDeleteBook={onDeleteBook}
+      id={id}
+      />
     </div>
   );
 };
