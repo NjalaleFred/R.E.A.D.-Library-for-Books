@@ -1,6 +1,7 @@
 import './App.css';
 import { Borrowing } from './Components/Borrowing';
 import { useEffect, useState } from 'react';
+import HomePage from './Components/home-page';
 
 function App() {
   const [books, setBooks] =useState([])
@@ -16,9 +17,10 @@ function App() {
 
   return (
     <div className="App">
-      <Borrowing books={books}/>
+          <Borrowing books={books}/><HomePage books={books} />
     </div>
   );
 }
 
 export default App;
+
