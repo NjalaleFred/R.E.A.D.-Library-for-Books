@@ -4,37 +4,29 @@ const HomePage = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        // fetch(`https://gutendex.com/books/?page=${page}&topic=${genre}&search=${query}`)
-        fetch(`https://gutendex.com/books/?page=1&topic=${genre}&search=${query}&fields=id,title,authors,description,image,subjects`)
+        fetch(`https://gutendex.com/books/?page=1&fields=id,title,authors,description,image,subjects`)
             .then((response) => response.json())
             .then((data) => {
                 setBooks(data.results);
             })
             .catch((error) => console.error(error));
-    }, [genre, query]);
+    }, []);
 
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Authors</th>
-                        <th>Book Cover</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {books.map((book) => (
-                        <tr key={book.id}>
-                            <td>{book.id}</td>
-                            <td>{book.title}</td>
-                            <td>{book.authors.map((author) => author.name).join(", ")}</td>
-                            <td><img src={book.formats["image/jpeg"]} alt=""/></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <h1>Book Search</h1>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+                {books.map((book) => (
+                    <div key={book.id} className="card" style={{ width: "300px", margin: "10px" }}>
+                        <img src={book.formats["image/jpeg"]} alt="" style={{ width: "100%" }} />
+                        <div style={{ padding: "10px" }}>
+                            <h2>{book.title}</h2>
+                            <p>by {book.authors.map((author) => author.name).join(", ")}</p>
+                            <p>{book.description}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
