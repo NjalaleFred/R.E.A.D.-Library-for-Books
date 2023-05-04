@@ -43,6 +43,15 @@ function AddBook({ newBooks, setNewBooks }) {
       });
   }
 
+  function handleImageUpload(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+  }
+
   return (
     <div>
       <header style={{
@@ -80,13 +89,22 @@ function AddBook({ newBooks, setNewBooks }) {
           onChange={(e) => setSubjects(e.target.value)}
         />
 
+        <label htmlFor="image-input" style={{margin: '10px'}}>Choose an image:</label>
         <input
+          id="image-input"
+          type="file"
+          accept=".jpg,.jpeg,.png,.gif"
+          onChange={handleImageUpload}
+          style={{margin: '10px'}}
+        />
+
+        {/* <input
           style={{margin: '10px'}}
           type="text"
-          placeholder="Image"
+          placeholder="Or input image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-        />
+        /> */}
         <button type="submit" style={{cursor: 'pointer'}}>Add a Book</button>
       </form>
     </div>
@@ -94,3 +112,4 @@ function AddBook({ newBooks, setNewBooks }) {
 }
 
 export default AddBook;
+
