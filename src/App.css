@@ -1,4 +1,29 @@
 .App {
-  text-align: center;
+  text-align: right;
+}
+
+nav {
+  text-align: left;
+  background-color: purple;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: 20px;
+  margin: 20px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: white;
+  border-bottom: 3px solid blue;
+  transition: 0.1s;
+}
+
+nav a:hover,
+nav a:active {
+  color: blue;
+  border-bottom: 3px solid white;
 }
 

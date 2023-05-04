@@ -40,7 +40,11 @@ function App() {
 
   return (
     <div className="App">
+
+      <nav>
       <NavBar onChangePage={setPage} />
+      </nav>
+      
       <Switch>
         <Route path="/add">
           <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
