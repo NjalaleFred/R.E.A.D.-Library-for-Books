@@ -2,8 +2,13 @@ import AddBook from "./Components/AddBook";
 import { useEffect, useState } from "react";
 import { Borrowing } from "./Components/Borrowing";
 import HomePage from "./Components/home-page";
+import { NavBar } from "./Components/Navbar";
+import { Switch, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
+  const [setPage] = useState("/");
+
   const [books, setBooks] = useState([]);
   const [newBooks, setNewBooks] = useState([]);
 
@@ -35,12 +40,24 @@ function App() {
 
   return (
     <div className="App">
-      <HomePage books={books} newBooks={newBooks}
-        setNewBooks={setNewBooks}
-        onDeleteBook={deleteBook}
-        id={newBooks.id} />
-      <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
-      <Borrowing books={books} />
+      <NavBar onChangePage={setPage} />
+      <Switch>
+        <Route path="/add">
+          <AddBook newBooks={newBooks} setNewBooks={setNewBooks} />
+        </Route>
+        <Route path="/borrow">
+          <Borrowing books={books} />
+        </Route>
+        <Route exact path="/">
+          <HomePage
+            books={books}
+            newBooks={newBooks}
+            setNewBooks={setNewBooks}
+            onDeleteBook={deleteBook}
+            id={newBooks.id}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 }
