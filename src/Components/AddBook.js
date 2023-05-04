@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function AddBook({ newBooks, setNewBooks }) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [image, setImage] = useState("");
   const [subjects, setSubjects] = useState("");
+  
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,6 +34,7 @@ function AddBook({ newBooks, setNewBooks }) {
       .then((resp) => resp.json())
       .then((data) => {
         postBook(data);
+        history.push("/")
 
         setAuthor("");
         setImage("");

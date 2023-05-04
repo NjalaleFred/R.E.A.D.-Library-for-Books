@@ -3,7 +3,7 @@ import SearchBar from "./Search";
 import GenreFilter from "./GenreFilter";
 import { DisplayAddedBook } from "./DisplayAddedBook";
 
-const HomePage = ({ books,newBooks,setNewBooks,onDeleteBook,id }) => {
+const HomePage = ({ books, newBooks, setNewBooks, onDeleteBook, id }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
 
@@ -30,6 +30,63 @@ const HomePage = ({ books,newBooks,setNewBooks,onDeleteBook,id }) => {
 
   return (
     <div>
+      <div id="bio" style={{ textAlign: "center", marginTop: "-30px" }}>
+        <h1 style={{ padding: "20px", color: "whitesmoke" }}>
+          Welcome to "R.E.A.D. - Library for Books"!
+        </h1>
+        <p
+          style={{
+            wordWrap: "normal",
+            fontWeight: "bolder",
+            lineHeight: "25px",
+          }}
+        >
+          We here at the R.E.A.D. (Realtime Electronic Access Display) truly
+          believe in our motto that 'Reading Is Fundamental'. That is why we
+          have set up this lovely application to not only make obtaining books
+          online easier, but to encourage it.
+        </p>
+        <div style={{ wordWrap: "normal", fontWeight: "bolder" }}>
+          In this application, you can:
+          <ol style={{ lineHeight: "30px" }}>
+            <li>
+              Search for your favourite books in our vast database ranging from
+              fiction to mystery to horror and beyond.
+            </li>
+            <li>
+              Add any and all books of your choice that you believe deserve a
+              spotlight in our database so others may borrow it.
+            </li>
+            <li>
+              Borrow all the books you want at a time and receieve a due date
+              that is three days past the borrowing date.
+            </li>
+          </ol>
+        </div>
+        <div
+          style={{
+            wordWrap: "normal",
+            fontWeight: "bolder",
+            lineHeight: "5px",
+          }}
+        >
+          <p>
+            To get started, you may use the search and filter form below to find
+            a book you desire.
+          </p>
+          <p>
+            Alternatively, you may click the "Home" button above to navigate to
+            our list of books
+          </p>
+          <p>
+            You may also borrow a book or add a new one using the respective
+            buttons in the navigation bar
+          </p>
+          <p style={{ fontWeight: "bolder", lineHeight: "100px" }}>
+            We hope you have a fun time here! :D
+          </p>
+        </div>
+      </div>
       <SearchBar handleSearch={handleSearch} />
       <GenreFilter
         selectedGenre={selectedGenre}
@@ -40,33 +97,36 @@ const HomePage = ({ books,newBooks,setNewBooks,onDeleteBook,id }) => {
           <div
             key={book.id}
             className="card"
-            style={{ width: "300px", padding: "10px" }}
+            style={{ width: "300px", border: "solid", margin: "15px" }}
           >
-              <img
+            <img
               src={book.formats["image/jpeg"]}
               alt=""
-              style={{ width: "100%"}}
+              style={{ width: "100%" }}
             />
-            <div style={{ padding: "10px", backgroundColor:"purple", fontSize:"15px", color:"white" }}>
+            <div
+              style={{
+                padding: "10px",
+                backgroundColor: "purple",
+                fontSize: "15px",
+                color: "white",
+              }}
+            >
               <h2>{book.title}</h2>
-              <p>
-                by {book.authors.map((author) => author.name).join(", ")}
-              </p>
+              <p>by {book.authors.map((author) => author.name).join(", ")}</p>
               <p>{book.description}</p>
             </div>
           </div>
         ))}
       </div>
       <DisplayAddedBook
-      newBooks={newBooks}
-      setNewBooks={setNewBooks}
-      onDeleteBook={onDeleteBook}
-      id={id}
+        newBooks={newBooks}
+        setNewBooks={setNewBooks}
+        onDeleteBook={onDeleteBook}
+        id={id}
       />
     </div>
   );
 };
 
-export default HomePage;
-
-
+export default HomePage;

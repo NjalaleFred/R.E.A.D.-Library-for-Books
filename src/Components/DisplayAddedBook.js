@@ -9,14 +9,29 @@ export const DisplayAddedBook = ({ newBooks, onDeleteBook }) => {
 
   const myBooks = newBooks.map((book) => {
     return (
-      <div key={book.id} style={{ display: "inline-grid", flexWrap: "wrap", backgroundColor:"purple" }}>
-        <h2 style={{margin:'0px', color:'white'}}>{book.title} </h2>
-        <h4 style={{margin:'0px', color:'white'}}>{book.author} </h4>
-        <img src={book.image} alt={book.title}></img>
-        <button style={{cursor: 'pointer'}} onClick={() => handleDeleteBook(book.id)}>Delete Book</button>
+      <div
+        key={book.id}
+        style={{
+          margin: "15px",
+          width: "25%",
+          display: "block",
+          flexWrap: "wrap",
+          backgroundColor: "purple",
+          border: "solid",
+        }}
+      >
+        <img style={{ width: "100%" }} src={book.image} alt={book.title}></img>
+        <h2 style={{ margin: "0px", color: "white" }}>{book.title} </h2>
+        <p style={{ margin: "0px", color: "white" }}>by {book.author} </p>
+        <button
+          style={{ cursor: "pointer" }}
+          onClick={() => handleDeleteBook(book.id)}
+        >
+          Delete Book
+        </button>
       </div>
     );
   });
 
-  return <div>{myBooks}</div>;
+  return <div style={{ display: "flex" }}>{myBooks}</div>;
 };
