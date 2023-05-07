@@ -13,6 +13,9 @@ export const NavBar = () => {
       <NavLink to="/add" className="link">
         Add a book
       </NavLink>
+    <NavLink to="/about" className="link">
+      About
+    </NavLink>
     </nav>
   );
 };

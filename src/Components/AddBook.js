@@ -97,14 +97,6 @@ function AddBook({ newBooks, setNewBooks }) {
           onChange={handleImageUpload}
           style={{margin: '10px'}}
         />
-
-        {/* <input
-          style={{margin: '10px'}}
-          type="text"
-          placeholder="Or input image URL"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        /> */}
         <button type="submit" style={{cursor: 'pointer'}}>Add a Book</button>
       </form>
     </div>

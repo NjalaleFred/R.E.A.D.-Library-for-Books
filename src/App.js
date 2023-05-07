@@ -4,6 +4,7 @@ import { Borrowing } from "./Components/Borrowing";
 import HomePage from "./Components/home-page";
 import { NavBar } from "./Components/Navbar";
 import { Switch, Route } from "react-router-dom";
+import { About } from "./Components/About";
 import "./App.css";
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
             onDeleteBook={deleteBook}
             id={newBooks.id}
           />
+        </Route>
+        <Route path="/about">
+          <About />
         </Route>
       </Switch>
     </div>
